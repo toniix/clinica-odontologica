@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turno</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/home_style.css">
+</head>
+<body class="bg-light">
+    <header class="bg-info text-white p-4 mb-4">
+        <div class="container d-flex justify-content-between">
+            <h1 class="h3 fascinate-inline-regular">Welcome <span th:text="${userName}" class="font-weight-bold text-tertiary "></span> to Clinica Odontológica</h1>
+            <nav class="d-flex justify-content-end">
+                <a href="/logout" class="btn btn-outline-light bg-danger ">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container-fluid">
+    <div class="row vh-100">
+        <!-- Columna de la imagen -->
+        <div class="col-md-6 d-none d-md-block p-0">
+            <div class="bg-image-left" style="height: 100vh; background-image: url('/images/img_fondo.jpg'); background-size: cover; background-position: center;"></div>
+        </div>
+
+        <!-- Columna del formulario -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="card shadow-sm" style="width: 100%; max-width: 450px;">
+                <div class="card-header bg-primary text-white text-center">
+                    <h5 class="mb-0" >Reservar un Turno</h5>
+                    <h5 th:text="${prueba}">qwq</h5>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/turno/registrar}" method="post" >
+                       
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha:</label>
+                            <input type="date" id="fecha" name="fecha" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="paciente" class="form-label">Paciente:</label>
+                            <select id="paciente" name="paciente.id" class="form-select" required>
+                                <option value="" disabled selected>Seleccione un paciente</option>
+                                <option th:each="paciente : ${pacientes}" th:value="${paciente.id}" th:text="${paciente.nombre} + ' ' + ${paciente.apellido}"></option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="odontologo" class="form-label">Odontólogo:</label>
+                            <select id="odontologo" name="odontologo.id" class="form-select"  required>
+                                <option value="" disabled selected>Seleccione un odontólogo</option>
+                                <option th:each="odontologo : ${odontologos}" th:value="${odontologo.id}" th:text="${odontologo.nombre} + ' ' + ${odontologo.apellido}"></option>
+                            </select>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <button type="submit" class="btn btn-primary">Registrar Turno</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <footer class="bg-info text-white text-center py-3 mt-4">
+        <p class="mb-0">&copy; 2024 Clinica Odontológica. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

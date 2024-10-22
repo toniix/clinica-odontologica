@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pelicula</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/header_style.css">
+</head>
+<body>
+    <header>
+        <div class="page-name">
+        <h2> Bienvenido <span th:text="${userName}" class="font-weight-bold text-tertiary "> </span> a Clinica Odontologica</h2>
+        <h1>DEVTANL</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/paciente">Pacientes</a></li>
+                <li><a href="/odontologo">Odontólogos</a></li>
+                <li><a href="/turno">Turnos</a></li>
+            </ul>
+            <a href="/logout" class="btn btn-danger">Cerrar sesión</a>
+        </nav>
+    </header>
+    <main>
+      <img src="/images/img1.jpg" alt="imagen de fondo" class="main-image">
+    </main>
+    <footer class="bg-info text-white text-center py-3 mt-4">
+        <p class="mb-0">&copy; 2024 Clinica Odontológica. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

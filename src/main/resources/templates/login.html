@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/login_style.css">
+</head>
+<body>
+    <div class="container login-container">
+        <h1 class="text-center mb-5 text-primary">Clinica Odontológica DEVTANL</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Iniciar sesion</h3>
+
+                        <div th:if="${param.error}" class="alert alert-danger text-center">
+                            Username o contraseña incorrecto.
+                        </div>
+                        <div th:if="${param.logout}" class="alert alert-success text-center">
+                            Has cerrado sesion con exito.
+                        </div>
+
+                        <form action="" th:action="@{/login}" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="d-grid text-center">
+                                <button type="submit" class="btn btn-primary w-50">Ingresar</button>
+                            </div>
+                        </form>
+                        
+                        <div class="text-center mt-3">
+                            <p>¿No tienes una cuenta? 
+                                <a th:href="@{/register}" class="text-primary fw-bold">Regístrate aquí</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

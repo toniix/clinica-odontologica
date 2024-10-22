@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+            background-color: #e7e5f1; /* Fondo claro */
+        }
+
+        .register-container {
+            margin-top: 80px;
+        }
+
+        .card {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #0dcaf0;
+            border-color: #0dcaf0;
+        }
+
+        .btn-primary:hover {
+            background-color: #0bb1de;
+            border-color: #0bb1de;
+        }

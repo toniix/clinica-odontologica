@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Paciente</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/header_style.css">
+</head>
+<body>
+    <header>
+        <div class="page-name">
+        <h2>Clinica Odontologica DEVTANL</h2>
+        <h1 class="title">Paciente</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/paciente">Pacientes</a></li>
+                <li><a href="/odontologo">Odontólogos</a></li>
+                <li><a href="/turno">Turnos</a></li>
+            </ul>
+            <a href="/logout" class="btn btn-danger">Cerrar sesión</a>
+        </nav>
+    </header>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Agregar Paciente</h3>
+                        <form id="form-add-paciente" th:action="@{/paciente/registrar}" method="post" th:object="${paciente}">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" th:field="*{nombre}" required>
+                                <div th:if="${#fields.hasErrors('nombre')}" class="invalid-feedback" th:errors="*{nombre}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="apellido" class="form-label">Apellido:</label>
+                                <input type="text" id="apellido" name="apellido" class="form-control" th:field="*{apellido}" required>
+                                <div th:if="${#fields.hasErrors('apellido')}" class="invalid-feedback" th:errors="*{apellido}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="dni" class="form-label">DNI:</label>
+                                <input type="text" id="dni" name="dni" class="form-control" th:field="*{dni}" minlength="3" required>
+                                <div th:if="${#fields.hasErrors('dni')}" class="invalid-feedback" th:errors="*{dni}"></div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="fechaIngreso" class="form-label">Fecha de ingreso:</label>
+                                <input type="date" id="fechaIngreso" name="fechaIngreso" class="form-control" th:field="*{fechaIngreso}" required>
+                                <div th:if="${#fields.hasErrors('fechaIngreso')}" class="invalid-feedback" th:errors="*{fechaIngreso}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <h5 class="mb-3">Domicilio</h5>
+                                <label for="calle" class="form-label">Calle:</label>
+                                <input type="text" id="calle" name="domicilio.calle" class="form-control" th:field="*{domicilio.calle}" required>
+                                <div th:if="${#fields.hasErrors('domicilio.calle')}" class="invalid-feedback" th:errors="*{domicilio.calle}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="numero" class="form-label">Número:</label>
+                                <input type="number" id="numero" name="domicilio.numero" class="form-control" th:field="*{domicilio.numero}" required>
+                                <div th:if="${#fields.hasErrors('domicilio.numero')}" class="invalid-feedback" th:errors="*{domicilio.numero}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="localidad" class="form-label">Localidad:</label>
+                                <input type="text" id="localidad" name="domicilio.localidad" class="form-control" th:field="*{domicilio.localidad}" required>
+                                <div th:if="${#fields.hasErrors('domicilio.localidad')}" class="invalid-feedback" th:errors="*{domicilio.localidad}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="provincia" class="form-label">Provincia:</label>
+                                <input type="text" id="provincia" name="domicilio.provincia" class="form-control" th:field="*{domicilio.provincia}" required>
+                                <div th:if="${#fields.hasErrors('domicilio.provincia')}" class="invalid-feedback" th:errors="*{domicilio.provincia}"></div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-danger">Registrar Paciente</button>
+                            </div>
+                        </form>
+                        
+                        <div class="text-center mt-4">
+                            <a href="/paciente" class="btn btn-secondary">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-info text-white text-center py-3 mt-4">
+        <p class="mb-0">&copy; 2024 Clinica Odontológica. Todos los derechos reservados.</p>
+    </footer>
+
+
+</body>
+</html>

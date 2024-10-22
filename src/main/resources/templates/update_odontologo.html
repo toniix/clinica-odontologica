@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar odontologo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/header_style.css">
+    <link rel="stylesheet" href="/css/update_style.css">
+
+</head>
+<body>
+    <header>
+        <div class="page-name">
+        <h2>Clinica Odontologica DEVTANL</h2>
+        <h1 class="title">Odontologo</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/paciente">Pacientes</a></li>
+                <li><a href="/turno">Turnos</a></li>
+            </ul>
+            <a href="/logout" class="btn btn-danger">Cerrar sesión</a>
+        </nav>
+    </header>
+     <div class="container">
+        <div class="form-container">
+            <h2 class="text-center mb-4">Actualizar Odontólogo</h2>
+
+            <form th:action="@{|/odontologo/${odontologo.id}/actualizar|}" method="post">
+                <input type="hidden" th:value="${odontologo.id}" name="id" />
+
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control" th:value="${odontologo.nombre}" required 
+                        th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+                    <div class="invalid-feedback">
+                        <p th:if="${#fields.hasErrors('nombre')}" th:errors="${#fields.errors('nombre')}">Por favor ingrese un nombre válido.</p>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido:</label>
+                    <input type="text" name="apellido" id="apellido" class="form-control" th:value="${odontologo.apellido}" required 
+                        th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''">
+                    <div class="invalid-feedback">
+                        <p th:if="${#fields.hasErrors('apellido')}" th:errors="${#fields.errors('apellido')}">Por favor ingrese un apellido válido.</p>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="matricula" class="form-label">Matrícula:</label>
+                    <input type="number" name="numeroMatricula" id="matricula" class="form-control" th:value="${odontologo.numeroMatricula}" required 
+                        th:classappend="${#fields.hasErrors('numeroMatricula')} ? 'is-invalid' : ''">
+                    <div class="invalid-feedback">
+                        <p th:if="${#fields.hasErrors('numeroMatricula')}" th:errors="${#fields.errors('numeroMatricula')}">Por favor ingrese una matrícula válida.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mb-4">
+                    <button type="submit" class="btn btn-primary">Actualizar Datos</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <a href="/paciente" class="btn btn-secondary">Volver</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-info text-white text-center py-3 mt-4">
+        <p class="mb-0">&copy; 2024 Clinica Odontológica. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

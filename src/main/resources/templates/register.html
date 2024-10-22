@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+</head>
+<body>
+    <div class="container register-container">
+        <h1 class="text-center mb-5 text-primary">Registrate en Clinica Odontológica DEVTANL</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Título del formulario -->
+                        <h3 class="card-title text-center mb-4">Registro</h3>
+
+                        <!-- Formulario de registro -->
+                        <form action="#" th:action="@{/register}" method="post" th:object="${usuarioDTO}">
+                            <!-- Nombre -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" name="name" id="name" th:field="*{nombre}" placeholder="Ingrese su nombre" required>
+                            </div>
+
+                            <!-- Nombre de usuario -->
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" name="username" id="username" th:field="*{username}" placeholder="Ingrese su nombre de usuario" required>
+                            </div>
+
+                            <!-- Correo electrónico -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" th:field="*{email}" placeholder="Ingrese su correo electrónico" required>
+                                <div th:if="${emailErrorMessage}" class="alert alert-danger" role="alert">
+                                    <p th:text="${emailErrorMessage}" class="text-danger"></p>
+                                </div>
+                            </div>
+
+
+                            <!-- Contraseña -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" name="password" id="password" th:field="*{password}" placeholder="Ingrese su contraseña" required>
+                                <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                                    <p th:text="${errorMessage}" class="text-danger"></p>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Confirmación de contraseña -->
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" th:field="*{confirmPassword}" placeholder="Confirme su contraseña" required>
+                                <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                                    <p th:text="${errorMessage}" class="text-danger"></p>
+                                </div>
+                            </div>
+
+                            <!-- Botón de registro -->
+                            <div class="d-grid text-center">
+                                <button type="submit" class="btn btn-primary">Registrarse</button>
+                            </div>
+                        </form>
+
+                        <!-- Enlace para iniciar sesión -->
+                        <div class="text-center mt-3">
+                            <p>¿Ya tienes una cuenta? <a th:href="@{/login}" class="text-primary fw-bold">Inicia sesión aquí</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
